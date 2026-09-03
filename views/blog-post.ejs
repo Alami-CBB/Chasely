@@ -4,6 +4,10 @@
   <meta charset="utf-8" />
   <title><%= post.title %> — Chasely</title>
   <meta name="description" content="<%= post.description %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="<%= post.title %>" />
+  <meta property="og:description" content="<%= post.description %>" />
+  <meta name="twitter:card" content="summary" />
   <link rel="stylesheet" href="/style.css" />
   <style>
     article{max-width:640px;margin:0 auto;padding:40px 20px 80px;}
