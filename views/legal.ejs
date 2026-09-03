@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= title %> — Chasely</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .legal{max-width:720px;margin:0 auto;padding:40px 20px 80px;}
+    .legal h1{font-size:1.7rem;margin:0 0 6px;}
+    .legal .updated{color:var(--ink-soft);font-size:.85rem;margin-bottom:32px;}
+    .legal h2{font-size:1.1rem;margin-top:30px;}
+    .legal p, .legal li{color:var(--ink-soft);font-size:.95rem;line-height:1.65;}
+    .legal ul{padding-left:20px;}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">Chasely</div>
+    <div class="navlinks"><a href="/">← Home</a></div>
+  </nav>
+  <div class="legal">
+    <h1><%= title %></h1>
+    <div class="updated">Last updated: <%= updated %></div>
+    <%- body %>
+  </div>
+  <footer style="text-align:center;padding:30px 20px;color:var(--ink-soft);font-size:.82rem;">
+    <a href="/terms">Terms of Service</a> · <a href="/privacy">Privacy Policy</a> · <a href="/refund-policy">Refund Policy</a>
+  </footer>
+</body>
+</html>
