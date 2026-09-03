@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard — Chasely</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="brand">Chasely</div>
+    <div class="navlinks">
+      <a href="/invoices/new">+ New invoice</a>
+      <form method="POST" action="/logout"><button type="submit" class="btn secondary">Log out</button></form>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="summary">
+      <div class="cell"><div class="k">$<%= outstanding.toFixed(2) %></div><div class="l">Outstanding</div></div>
+      <div class="cell"><div class="k"><%= invoices.length %></div><div class="l">Total invoices</div></div>
+      <div class="cell"><div class="k"><%= overdueCount %></div><div class="l">Overdue</div></div>
+    </div>
+
+    <div class="pagehead"><h1>Invoices</h1></div>
+
+    <% if (invoices.length === 0) { %>
+      <div class="empty">No invoices yet. <a href="/invoices/new">Add your first one</a> to start tracking payments.</div>
+    <% } else { %>
+    <table>
+      <thead>
+        <tr><th>Client</th><th>Invoice #</th><th>Amount</th><th>Due</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody>
+        <% invoices.forEach(inv => { %>
+        <tr>
+          <td><%= inv.client_name %><br/><span style="color:var(--ink-soft);font-size:.82rem;"><%= inv.client_email %></span></td>
+          <td><%= inv.invoice_number %></td>
+          <td><%= inv.currency %> <%= inv.amount.toFixed(2) %></td>
+          <td><%= inv.due_date %></td>
+          <td>
+            <% if (inv.status === 'paid') { %>
+              <span class="tag paid">Paid</span>
+            <% } else if (inv.daysOverdue > 0) { %>
+              <span class="tag overdue"><%= inv.daysOverdue %>d overdue</span>
+            <% } else { %>
+              <span class="tag unpaid">Unpaid</span>
+            <% } %>
+          </td>
+          <td class="actions">
+            <% if (inv.status !== 'paid') { %>
+              <a class="btn" href="/invoices/<%= inv.id %>/reminder">Draft reminder</a>
+              <form method="POST" action="/invoices/<%= inv.id %>/mark-paid">
+                <button type="submit" class="btn secondary">Mark paid</button>
+              </form>
+            <% } %>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+</body>
+</html>
