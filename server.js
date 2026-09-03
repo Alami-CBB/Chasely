@@ -8,6 +8,7 @@ const { pool, init } = require('./db');
 const { draft, stageForDaysOverdue, STAGES } = require('./lib/reminders');
 const billing = require('./lib/billing');
 const posts = require('./content/posts');
+const legal = require('./content/legal');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -59,7 +60,7 @@ app.get('/blog', (req, res) => res.render('blog-index', { posts }));
 
 app.get('/sitemap.xml', (req, res) => {
   const origin = `${req.protocol}://${req.get('host')}`;
-  const staticPaths = ['/', '/blog', '/login', '/signup'];
+  const staticPaths = ['/', '/blog', '/login', '/signup', '/terms', '/privacy', '/refund-policy'];
   const urls = [
     ...staticPaths.map((p) => `${origin}${p}`),
     ...posts.map((p) => `${origin}/blog/${p.slug}`),
@@ -77,6 +78,10 @@ app.get('/blog/:slug', (req, res) => {
   if (!post) return res.status(404).send('Not found');
   res.render('blog-post', { post });
 });
+
+app.get('/terms', (req, res) => res.render('legal', legal.terms));
+app.get('/privacy', (req, res) => res.render('legal', legal.privacy));
+app.get('/refund-policy', (req, res) => res.render('legal', legal.refundPolicy));
 
 app.get('/signup', (req, res) => res.render('signup', { error: null }));
 
