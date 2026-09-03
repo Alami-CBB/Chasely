@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Reminder — <%= invoice.invoice_number %></title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="brand">Chasely</div>
+    <div class="navlinks"><a href="/dashboard">← Dashboard</a></div>
+  </nav>
+  <div class="container" style="max-width:640px;">
+    <h1>Reminder for <%= invoice.client_name %></h1>
+    <p style="color:var(--ink-soft);">Invoice <%= invoice.invoice_number %> · <%= invoice.currency %> <%= invoice.amount.toFixed(2) %> · due <%= invoice.due_date %></p>
+
+    <div class="stagebar">
+      <a href="/invoices/<%= invoice.id %>/reminder?stage=friendly" class="<%= stage === 'friendly' ? 'active' : '' %>">Friendly</a>
+      <a href="/invoices/<%= invoice.id %>/reminder?stage=firm" class="<%= stage === 'firm' ? 'active' : '' %>">Firm</a>
+      <a href="/invoices/<%= invoice.id %>/reminder?stage=final" class="<%= stage === 'final' ? 'active' : '' %>">Final notice</a>
+    </div>
+
+    <div class="emailbox">
+      <div class="subject"><%= email.subject %></div>
+      <pre><%= email.body %></pre>
+    </div>
+
+    <form method="POST" action="/invoices/<%= invoice.id %>/reminder/log" style="margin-top:16px;">
+      <input type="hidden" name="stage" value="<%= stage %>" />
+      <input type="hidden" name="subject" value="<%= email.subject %>" />
+      <input type="hidden" name="body" value="<%= email.body %>" />
+      <button type="submit">Mark as sent</button>
+      <a class="btn secondary" href="mailto:<%= invoice.client_email %>?subject=<%= encodeURIComponent(email.subject) %>&body=<%= encodeURIComponent(email.body) %>">Open in email app</a>
+    </form>
+  </div>
+</body>
+</html>
