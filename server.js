@@ -52,6 +52,21 @@ app.get('/', (req, res) => {
 
 app.get('/blog', (req, res) => res.render('blog-index', { posts }));
 
+app.get('/sitemap.xml', (req, res) => {
+  const origin = `${req.protocol}://${req.get('host')}`;
+  const staticPaths = ['/', '/blog', '/login', '/signup'];
+  const urls = [
+    ...staticPaths.map((p) => `${origin}${p}`),
+    ...posts.map((p) => `${origin}/blog/${p.slug}`),
+  ];
+  res.set('Content-Type', 'application/xml');
+  res.send(
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n') +
+      `\n</urlset>`
+  );
+});
+
 app.get('/blog/:slug', (req, res) => {
   const post = posts.find((p) => p.slug === req.params.slug);
   if (!post) return res.status(404).send('Not found');
