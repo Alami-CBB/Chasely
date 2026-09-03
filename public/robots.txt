@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /invoices
+Disallow: /billing
+
+Sitemap: https://chasely.onrender.com/sitemap.xml
