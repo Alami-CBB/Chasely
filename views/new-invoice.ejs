@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>New invoice — Chasely</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="brand">Chasely</div>
+    <div class="navlinks"><a href="/dashboard">← Dashboard</a></div>
+  </nav>
+  <div class="container" style="max-width:520px;">
+    <h1>Add an invoice</h1>
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+      <% if (upsell) { %>
+        <form method="POST" action="/billing/checkout" style="margin-bottom:18px;">
+          <button type="submit">Upgrade — $19/mo, unlimited invoices</button>
+        </form>
+      <% } %>
+    <% } %>
+    <form method="POST" action="/invoices/new">
+      <label>Client name</label>
+      <input type="text" name="client_name" required />
+      <label>Client email</label>
+      <input type="email" name="client_email" required />
+      <label>Invoice number</label>
+      <input type="text" name="invoice_number" required />
+      <label>Amount</label>
+      <input type="number" step="0.01" name="amount" required />
+      <label>Currency</label>
+      <input type="text" name="currency" value="USD" />
+      <label>Due date</label>
+      <input type="date" name="due_date" required />
+      <label>Payment link (optional — Stripe/PayPal link)</label>
+      <input type="url" name="payment_link" placeholder="https://buy.stripe.com/..." />
+      <div style="margin-top:20px;"><button type="submit">Save invoice</button></div>
+    </form>
+  </div>
+</body>
+</html>
