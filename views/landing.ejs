@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chasely — Get invoices paid without the awkward follow-up</title>
+  <meta name="description" content="Chasely drafts your invoice payment reminders for you — friendly, then firm, then final — so freelancers stop losing afternoons to chasing clients." />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .hero{padding:70px 20px 40px;text-align:center;max-width:680px;margin:0 auto;}
+    .hero h1{font-size:2.1rem;line-height:1.2;margin:0 0 14px;}
+    .hero p{color:var(--ink-soft);font-size:1.08rem;margin:0 0 26px;}
+    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .strip{max-width:820px;margin:56px auto;padding:0 20px;}
+    .strip h2{font-size:1.3rem;text-align:center;margin-bottom:28px;}
+    .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .stages .st{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;}
+    .stages .st .day{font-size:.76rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+    .stages .st h3{margin:6px 0 6px;font-size:1rem;}
+    .stages .st p{margin:0;font-size:.88rem;color:var(--ink-soft);}
+    .pricing{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+    .plan{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;width:230px;text-align:center;}
+    .plan .price{font-size:1.8rem;font-weight:700;margin:8px 0 2px;}
+    .plan .per{color:var(--ink-soft);font-size:.82rem;}
+    .plan ul{list-style:none;padding:0;margin:18px 0;text-align:left;font-size:.88rem;color:var(--ink-soft);}
+    .plan li{padding:4px 0;}
+    footer.site{text-align:center;padding:40px 20px;color:var(--ink-soft);font-size:.85rem;}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">Chasely</div>
+    <div class="navlinks">
+      <a href="/blog">Guides</a>
+      <a href="/login">Log in</a>
+      <a class="btn" href="/signup">Start free</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Get invoices paid without writing another awkward follow-up email.</h1>
+    <p>Add an unpaid invoice. Chasely tells you exactly what to send and when — friendly at day 3, firm at day 10, final notice at day 21 — with your payment link built in.</p>
+    <div class="cta-row">
+      <a class="btn" href="/signup">Start free — 3 invoices, no card</a>
+      <a class="btn secondary" href="#pricing">See pricing</a>
+    </div>
+  </div>
+
+  <div class="strip">
+    <h2>The three-message sequence that gets responses</h2>
+    <div class="stages">
+      <div class="st"><div class="day">Day 3</div><h3>Friendly nudge</h3><p>Assumes it slipped through. Short, warm, payment link included.</p></div>
+      <div class="st"><div class="day">Day 10</div><h3>Firm follow-up</h3><p>Asks directly for a date, gives room to flag a real problem.</p></div>
+      <div class="st"><div class="day">Day 21</div><h3>Final notice</h3><p>States terms plainly — late fees, paused work — and asks for same-day reply.</p></div>
+    </div>
+  </div>
+
+  <div class="strip" id="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="plan">
+        <div>Free</div>
+        <div class="price">$0</div>
+        <div class="per">up to 3 invoices</div>
+        <ul>
+          <li>Full reminder sequence</li>
+          <li>Unlimited reminders per invoice</li>
+          <li>One-click payment links</li>
+        </ul>
+        <a class="btn secondary" href="/signup" style="display:block;">Start free</a>
+      </div>
+      <div class="plan" style="border-color:var(--accent);">
+        <div>Freelancer</div>
+        <div class="price">$19</div>
+        <div class="per">per month</div>
+        <ul>
+          <li>Unlimited invoices</li>
+          <li>Full reminder sequence</li>
+          <li>Payment tracking dashboard</li>
+        </ul>
+        <a class="btn" href="/signup" style="display:block;">Start free</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site">Chasely — built for freelancers and small agencies who'd rather bill than chase.</footer>
+</body>
+</html>
