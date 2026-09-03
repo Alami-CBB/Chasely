@@ -12,6 +12,11 @@ const posts = require('./content/posts');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Render (and most PaaS hosts) terminate TLS at a proxy and forward plain
+// HTTP internally. Without this, req.protocol always reports "http", which
+// breaks the sitemap and the Stripe checkout redirect URLs in production.
+app.set('trust proxy', 1);
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
