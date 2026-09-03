@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><%= post.title %> — Chasely</title>
+  <meta name="description" content="<%= post.description %>" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    article{max-width:640px;margin:0 auto;padding:40px 20px 80px;}
+    article h1{font-size:1.7rem;line-height:1.25;}
+    article h2{font-size:1.2rem;margin-top:32px;}
+    article p{color:var(--ink-soft);}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">Chasely</div>
+    <div class="navlinks"><a href="/blog">← Guides</a></div>
+  </nav>
+  <article>
+    <h1><%= post.title %></h1>
+    <%- post.body %>
+    <div style="margin-top:40px;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:10px;">
+      <strong>Chasely</strong> drafts this exact sequence for you automatically. <a href="/signup">Try it free →</a>
+    </div>
+  </article>
+</body>
+</html>
