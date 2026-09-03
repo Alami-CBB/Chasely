@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Create account — Chasely</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="authbox">
+    <h1>Create your account</h1>
+    <p class="sub">Takes about a minute. No card required for the MVP.</p>
+    <% if (error) { %><div class="error"><%= error %></div><% } %>
+    <form method="POST" action="/signup">
+      <label>Business / freelancer name</label>
+      <input type="text" name="business_name" placeholder="e.g. Alami Studio" required />
+      <label>Email</label>
+      <input type="email" name="email" required />
+      <label>Password</label>
+      <input type="password" name="password" required />
+      <div style="margin-top:20px;"><button type="submit">Create account</button></div>
+    </form>
+    <p style="margin-top:16px;font-size:.88rem;color:var(--ink-soft);">
+      Already have one? <a href="/login">Log in</a>
+    </p>
+  </div>
+</body>
+</html>
